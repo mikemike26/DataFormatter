@@ -13,7 +13,7 @@ This is meant to extend the model object, but Sails doesn't have an elegant way 
 Then add this inside your module.exports.models
 
     normalize: function(items, config) {
-      return dataFormatter.normalize(items, this, config);
+      return dataFormatter.format(items, this, config);
     }
     
     

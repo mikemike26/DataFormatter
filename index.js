@@ -155,4 +155,4 @@
       return output;
     };
 
-module.exports.dataFormatter = normalize;
+module.exports.format = normalize;
