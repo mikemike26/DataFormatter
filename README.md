@@ -7,15 +7,18 @@ I originally built this to handle legacy data structures and convert it to a mor
 npm install https://github.com/mikemike26/DataFormatter.git
 
 This is meant to extend the model object, but Sails doesn't have an elegant way to do this yet so include the following in your config/models.js:
+
     var dataFormatter = require('dataFormatter');
     
 Then add this inside your module.exports.models
+
     normalize: function(items, config) {
       return dataFormatter.normalize(items, this, config);
     }
     
     
 Add a new data format to any of your models by adding keys and values to SWAP_VALUES:
+
     formatData: {
         SWAP_VALUES: {
           original_key_from_db: ["new_key"]
@@ -44,6 +47,7 @@ You can also add new keys and values as well in NEW_OBJECTS.  This is especially
       }
       
 After that's all set up, use this in your controller after you retrieve data from your database
+
     module.exports = {
       find: function(req, res) {
         yourModel.query(query, function(err, results) {
