@@ -116,25 +116,28 @@
     * @param  {object} config
     * @return {Object}
     */
-    _buildEach = function(item, model, config) {
-      _currentData = JSON.parse(JSON.stringify(config ? config.normalizer.NEW_OBJECTS : model.normalizer.NEW_OBJECTS));
-      _swapValues = config ? config.normalizer.SWAP_VALUES : model.normalizer.SWAP_VALUES;
-      for(var thisProp in item) {
-        //check if this is a prototype method
-        if(item.hasOwnProperty(thisProp)) {
-          _insertValue = item[thisProp];
-          _prop = thisProp;
-          //if this property is on the swap list
-          //get swap value
-          if(_compareSwap(thisProp)) {
-            _currentData = _addSwapValue();
-          }else {
-            _currentData[thisProp] = _insertValue;
-          }
-        }
-      }
-      return _currentData;
-    },
+   _buildEach = function(item, model, config) {
+     _currentData = {};
+     if(config || model) {
+       _currentData = JSON.parse(JSON.stringify(config ? config.formatData.NEW_OBJECTS : model.formatData.NEW_OBJECTS));
+     }
+     _swapValues = config ? config.formatData.SWAP_VALUES : model.formatData.SWAP_VALUES;
+     for(var thisProp in item) {
+       //check if this is a prototype method
+       if(item.hasOwnProperty(thisProp)) {
+         _insertValue = item[thisProp];
+         _prop = thisProp;
+         //if this property is on the swap list
+         //get swap value
+         if(_compareSwap(thisProp, _swapValues)) {
+           _currentData = _addSwapValue();
+         }else {
+           _currentData[thisProp] = _insertValue;
+         }
+       }
+     }
+     return _currentData;
+   },
    /**
     * this normalizes all items from our model for use on the client
     *
