@@ -1,0 +1,26 @@
+{
+  "name": "dataformatter",
+  "version": "1.0.0",
+  "description": "This is a plugin that allows you to specify new keys and set a new format on data pulled from a database.  I originally built this to handle legacy data structures and convert it to a more usable format for modern apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikemike26/DataFormatter"
+  },
+  "keywords": [
+    "normalizer",
+    "format",
+    "data",
+    "database",
+    "normalize"
+  ],
+  "author": "Michael Rensel <rensel.michael@gmail.com> (https://github.com/mikemike26)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikemike26/DataFormatter/issues"
+  },
+  "homepage": "https://github.com/mikemike26/DataFormatter#readme"
+}
