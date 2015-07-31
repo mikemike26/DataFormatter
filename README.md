@@ -58,3 +58,102 @@ After that's all set up, use this in your controller after you retrieve data fro
         });
       }
     };
+    
+## Example of Usage
+
+Incoming data from our model:
+    
+    data = [
+      {
+        site1_address1: "someValue",
+        site1_address2: "someValue",
+        site1_city: "someValue",
+        site1_zip: "someValue",
+        site1_state: "someValue",
+        site2_address1: "someValue",
+        site2_address2: "someValue",
+        site2_city: "someValue",
+        site2_zip: "someValue",
+        site2_state: "someValue",
+        site3_address1: "someValue",
+        site3_address2: "someValue",
+        site3_city: "someValue",
+        site3_zip: "someValue",
+        site3_state: "someValue"
+      }
+    ]
+
+Apply our desired format:
+
+    formatData: {
+        SWAP_VALUES: {
+          site1_address1: ["address1", "addresses/site1"],
+          site1_address2: ["address2", "addresses/site1"],
+          site1_city: ["city", "addresses/site1"],
+          site1_zip: ["zip", "addresses/site1"],
+          site1_state: ["state", "addresses/site1"],
+          site2_address1: ["address1", "addresses/site2"],
+          site2_address2: ["address2", "addresses/site2"],
+          site2_city: ["city", "addresses/site2"],
+          site2_zip: ["zip", "addresses/site2"],
+          site2_state: ["state", "addresses/site2"],
+          site3_address1: ["address1", "addresses/site3"],
+          site3_address2: ["address2", "addresses/site3"],
+          site3_city: ["city", "addresses/site3"],
+          site3_zip: ["zip", "addresses/site3"],
+          site3_state: ["state", "addresses/site3"]
+        },
+        NEW_OBJECTS: {
+          addresses: [
+            {
+              type: "site1",
+              siteName: "Site One"
+            },
+            {
+              type: "site2",
+              siteName: "Site Two"
+            },
+            {
+              type: "site3",
+              siteName: "Site Three"
+            }
+          ]
+        }
+      }
+        
+Resulting output: 
+
+       data: {
+          addresses: [
+            {
+              type: "site1",
+              siteName: "Site One",
+              address1: "someValue",
+              address2: "someValue",
+              city: "someValue",
+              zip: "someValue",
+              state: "someValue"
+            },
+            {
+              type: "site2",
+              siteName: "Site Two",
+              address1: "someValue",
+              address2: "someValue",
+              city: "someValue",
+              zip: "someValue",
+              state: "someValue"
+            },
+            {
+              type: "site3",
+              siteName: "Site Three",
+              address1: "someValue",
+              address2: "someValue",
+              city: "someValue",
+              zip: "someValue",
+              state: "someValue"
+            }
+          ]
+        }
+        
+Notice that "type" is required since we're specifying an array of addresses and we added the key "siteName"
+Todo: write tests, expand to support inserting new format into new database tables
