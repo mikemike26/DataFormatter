@@ -87,18 +87,18 @@ Apply our desired format:
 
     formatData: {
         SWAP_VALUES: {
-          site1_address1: ["address1", "addresses/site1"],
-          site1_address2: ["address2", "addresses/site1"],
+          site1_address1: ["address1", "addresses/site1/address"],
+          site1_address2: ["address2", "addresses/site1/address"],
           site1_city: ["city", "addresses/site1"],
           site1_zip: ["zip", "addresses/site1"],
           site1_state: ["state", "addresses/site1"],
-          site2_address1: ["address1", "addresses/site2"],
-          site2_address2: ["address2", "addresses/site2"],
+          site2_address1: ["address1", "addresses/site2/address"],
+          site2_address2: ["address2", "addresses/site2/address"],
           site2_city: ["city", "addresses/site2"],
           site2_zip: ["zip", "addresses/site2"],
           site2_state: ["state", "addresses/site2"],
-          site3_address1: ["address1", "addresses/site3"],
-          site3_address2: ["address2", "addresses/site3"],
+          site3_address1: ["address1", "addresses/site3/address"],
+          site3_address2: ["address2", "addresses/site3/address"],
           site3_city: ["city", "addresses/site3"],
           site3_zip: ["zip", "addresses/site3"],
           site3_state: ["state", "addresses/site3"]
@@ -128,8 +128,10 @@ Resulting output:
             {
               type: "site1",
               siteName: "Site One",
-              address1: "someValue",
-              address2: "someValue",
+              address: {
+                address1: "someValue",
+                address2: "someValue",
+              },
               city: "someValue",
               zip: "someValue",
               state: "someValue"
@@ -137,8 +139,10 @@ Resulting output:
             {
               type: "site2",
               siteName: "Site Two",
-              address1: "someValue",
-              address2: "someValue",
+              address: {
+                address1: "someValue",
+                address2: "someValue",
+              },
               city: "someValue",
               zip: "someValue",
               state: "someValue"
@@ -146,8 +150,10 @@ Resulting output:
             {
               type: "site3",
               siteName: "Site Three",
-              address1: "someValue",
-              address2: "someValue",
+              address: {
+                address1: "someValue",
+                address2: "someValue",
+              },
               city: "someValue",
               zip: "someValue",
               state: "someValue"
@@ -155,7 +161,7 @@ Resulting output:
           ]
         }
         
-Notice that "type" is required since we're specifying an array of addresses and we added the key "siteName"
+Notice that "type" is required since we're specifying an array of addresses, we added the key "siteName", and the address object was created for each item even though we didn't specify it in our NEW_OBJECTS
 
 ### Todo: 
 
