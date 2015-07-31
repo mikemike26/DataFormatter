@@ -65,6 +65,7 @@ Incoming data from our model:
     
     data = [
       {
+        operation_delta_name: "someValue",
         site1_address1: "someValue",
         site1_address2: "someValue",
         site1_city: "someValue",
@@ -101,7 +102,8 @@ Apply our desired format:
           site3_address2: ["address2", "addresses/site3/address"],
           site3_city: ["city", "addresses/site3"],
           site3_zip: ["zip", "addresses/site3"],
-          site3_state: ["state", "addresses/site3"]
+          site3_state: ["state", "addresses/site3"],
+          operation_delta_name: ["operationName"]
         },
         NEW_OBJECTS: {
           addresses: [
@@ -124,6 +126,7 @@ Apply our desired format:
 Resulting output: 
 
        data: {
+          operationName = "someValue",
           addresses: [
             {
               type: "site1",
@@ -161,7 +164,12 @@ Resulting output:
           ]
         }
         
-Notice that "type" is required since we're specifying an array of addresses, we added the key "siteName", and the address object was created for each item even though we didn't specify it in our NEW_OBJECTS
+Notice that: 
+*  "type" is required since we're specifying an array of addresses 
+*  we added the key "siteName"
+*  the address object was created for each item even though we didn't specify it in our NEW_OBJECTS
+*  operation_delta_name was changed to operationName without changing the position level in our set
+
 
 ### Todo: 
 
